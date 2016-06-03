@@ -104,7 +104,7 @@ typedef void (^_FDViewControllerWillAppearInjectBlock)(UIViewController *viewCon
     [self fd_viewWillAppear:animated];
     
     if (self.fd_willAppearInjectBlock) {
-        self.fd_willAppearInjectBlock(self, animated);
+        self.fd_willAppearInjectBlock(self, YES);
     }
 }
 

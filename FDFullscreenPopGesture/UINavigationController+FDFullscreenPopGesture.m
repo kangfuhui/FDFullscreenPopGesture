@@ -79,7 +79,10 @@
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
     if ([otherGestureRecognizer.view isKindOfClass:[UIScrollView class]]) {
-        return YES;
+        UIScrollView *scollView = (UIScrollView*)otherGestureRecognizer.view;
+        if (scollView.contentOffset.x <= 0) {
+            return YES;
+        }
     }
     return NO;
 }

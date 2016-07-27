@@ -65,14 +65,18 @@
     return YES;
 }
 
-    //test
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldBeRequiredToFailByGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    if ([otherGestureRecognizer.view isKindOfClass:[UIScrollView class]]) {
+        return YES;
+    }
+    return NO;
+}
+
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
     if ([otherGestureRecognizer.view isKindOfClass:[UIScrollView class]]) {
-        UIScrollView *scrollView = (UIScrollView*)otherGestureRecognizer.view;
-        if (scrollView.contentOffset.x <= 0) {
-            return YES;
-        }
+        return YES;
     }
     return NO;
 }

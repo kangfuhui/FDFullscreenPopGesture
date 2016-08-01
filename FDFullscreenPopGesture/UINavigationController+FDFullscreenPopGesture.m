@@ -76,7 +76,7 @@
 //            }
 //        }
         
-        if (scrollView.contentOffset.x <= 0) {
+        if (scrollView.contentSize.width > CGRectGetWidth(scrollView.bounds) && scrollView.contentOffset.x <= 0) {
             return YES;
         }
     }
@@ -87,8 +87,8 @@
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
     if ([otherGestureRecognizer.view isKindOfClass:[UIScrollView class]]) {
-        UIScrollView *scollView = (UIScrollView*)otherGestureRecognizer.view;
-        if (scollView.contentSize.width > CGRectGetWidth(scollView.bounds) && scollView.contentOffset.x <= 0) {
+        UIScrollView *scrollView = (UIScrollView*)otherGestureRecognizer.view;
+        if (scrollView.contentSize.width > CGRectGetWidth(scrollView.bounds) && scrollView.contentOffset.x <= 0) {
             return YES;
         }
 //        if ([scollView isKindOfClass:[UITableView class]]) {

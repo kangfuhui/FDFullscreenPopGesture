@@ -69,12 +69,12 @@
 {
     if ([otherGestureRecognizer.view isKindOfClass:[UIScrollView class]]) {
         UIScrollView *scrollView = (UIScrollView*)otherGestureRecognizer.view;
-        if ([scrollView isKindOfClass:[UITableView class]]) {
-            UITableView *tableView = (UITableView*)scrollView;
-            if (tableView.isEditing) {
-                return NO;
-            }
-        }
+//        if ([scrollView isKindOfClass:[UITableView class]]) {
+//            UITableView *tableView = (UITableView*)scrollView;
+//            if (tableView.isEditing) {
+//                return NO;
+//            }
+//        }
         
         if (scrollView.contentOffset.x <= 0) {
             return YES;
@@ -83,19 +83,23 @@
     return NO;
 }
 
+
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
     if ([otherGestureRecognizer.view isKindOfClass:[UIScrollView class]]) {
         UIScrollView *scollView = (UIScrollView*)otherGestureRecognizer.view;
-        if ([scollView isKindOfClass:[UITableView class]]) {
-            UITableView *tableView = (UITableView*)scollView;
-            if (tableView.isEditing) {
-                return NO;
-            }
-        }
-        if (scollView.contentOffset.x <= 0) {
+        if (scollView.contentSize.width > CGRectGetWidth(scollView.bounds) && scollView.contentOffset.x <= 0) {
             return YES;
         }
+//        if ([scollView isKindOfClass:[UITableView class]]) {
+//            UITableView *tableView = (UITableView*)scollView;
+//            if (tableView.isEditing) {
+//                return NO;
+//            }
+//        }
+//        if (scollView.contentOffset.x <= 0) {
+//            return YES;
+//        }
     }
     return NO;
 }
